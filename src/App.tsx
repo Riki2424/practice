@@ -1,10 +1,9 @@
 import React from "react";
-import { InstitutionSearch } from "./pages/search";
-
+import Main from "./page/main";
 const App = () => {
   return (
     <>
-      <InstitutionSearch />
+      <Main />
     </>
   );
 };
