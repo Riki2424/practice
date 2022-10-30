@@ -18,7 +18,9 @@ export const Main: React.FC = (props) => {
               >
                 s
               </iframe>
-              <button className="on">OFF</button>
+              <button className="on" onClick={() => props.onClick()}>
+                OFF
+              </button>
             </div>
           </div>
         </div>
@@ -63,7 +65,7 @@ const Wrapper = styled.div`
       width: 100%;
       position: relative;
         .on {
-          font-size: 20px;
+          font-size:32px;
           position: absolute;
           top: 100px;
           width: 70px;
