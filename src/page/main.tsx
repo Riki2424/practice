@@ -1,54 +1,45 @@
 import React from "react";
 import styled from "styled-components";
-import { InstitutionResult } from "../molecles/list";
-export const Main: React.FC = (props) => {
+import { useState } from "react";
+import SearchList from "../molecles/list";
+
+export const Institution: React.FC = () => {
+  const [active, setActive] = useState(true);
+  const SlideMenu = () => {
+    setActive(!active);
+  };
   return (
     <>
       <Wrapper>
-        <div className="main-container">
-          <p className="link-top">マイページTOP</p>
-          <span className="link-text">施設選択</span>
-          <div className="search">
-            <InstitutionResult />
-            <div className="map">
-              <iframe
-                src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d246670.83842018424!2d139.7070482148228!3d35.67676200469398!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sja!2sjp!4v1666757999769!5m2!1sja!2sjp"
-                width="100%"
-                height="100%"
-              >
-                s
-              </iframe>
-              <button className="on" onClick={() => props.onClick()}>
-                OFF
-              </button>
-            </div>
-          </div>
+        <button className="on-sp" onClick={() => SlideMenu()}>
+          ボタン
+        </button>
+        <div className="map">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d246670.83842018424!2d139.7070482148228!3d35.67676200469398!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sja!2sjp!4v1666757999769!5m2!1sja!2sjp"
+            width="100%"
+            height="500px"
+          >
+            s
+          </iframe>
         </div>
-        <div className="institution-sp">
-          <div className="inner">
-            <div className="top-link">
-              <p>マイページTOP</p>
-              <span>施設選択</span>
-            </div>
-            <input placeholder="新宿 東急プラザ" />
-            <div className="search-container">
-              <button>絞り込み検索</button>
-              <span>一覧で表示</span>
-            </div>
-          </div>
-          <div className="map">
-            <iframe
-              src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d246670.83842018424!2d139.7070482148228!3d35.67676200469398!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sja!2sjp!4v1666757999769!5m2!1sja!2sjp"
-              width="100%"
-              height="500px"
-            >
-              s
-            </iframe>
-          </div>
-        </div>
+        <SearchList
+          SlideMenu={SlideMenu}
+          style={active ? ToggleDownProps : ToggleUpProps}
+        />
       </Wrapper>
     </>
   );
+};
+
+const ToggleUpProps = {
+  transform: "translate(0, -230px)",
+  background: "#f2f2f2",
+};
+
+const ToggleDownProps = {
+  transform: "translate(0vw, -52px)",
+  background: "#f2f2f2",
 };
 const Wrapper = styled.div`
   @media screen and (min-width: 768px) {
@@ -60,19 +51,30 @@ const Wrapper = styled.div`
       width: 1046px;
       height: 468px;
       margin-bottom 27px;
+      .on {
+        position: absolute;
+        top: 100px;
+        width: 40px;
+        right: 200px;
+        z-index:9;
+        cursor: pointer;
+      }
+      .off {
+        position: absolute;
+        top: 100px;
+        width: 40px;
+        right: 200px;
+        z-index:10;
+        cursor: pointer;
+        &: hover {
+          opacity: 0;
+        }
+      }
     }
     .map {
       width: 100%;
       position: relative;
-        .on {
-          font-size:32px;
-          position: absolute;
-          top: 100px;
-          width: 70px;
-          right: 200px;
-          z-index:10;
-          cursor: pointer;
-        }
+      z-index: -1;
       }
     .main-container {
       display: none;
@@ -108,7 +110,6 @@ const Wrapper = styled.div`
     }
   .institution-sp {
     @media screen and (min-width: 768px) {
-        display: none;
       }
     .inner {
       width: 343px;
@@ -138,7 +139,27 @@ const Wrapper = styled.div`
         color: black;
       }
     }
+    .on-sp {
+      position: absolute;
+      top: 340px;
+      width: 40px;
+      right: 200px;
+      z-index:9;
+      cursor: pointer;
+    }
+    .off-sp {
+      position: absolute;
+      top: 340px;
+      width: 40px;
+      right: 200px;
+      z-index:10;
+      cursor: pointer;
+      &: hover {
+        opacity: 0;
+      }
+    }
     input {
+      position: relative;
       width: 100%;
       margin: 8px 0;
       font-size: 16px;
@@ -149,7 +170,17 @@ const Wrapper = styled.div`
       &:focus {
         border-color: #2e718b;
         box-shadow: 0px 3px 10px #2e718b1a;
+        .search {
+          display: none;
+        }
       }
+    }
+    .search {
+      position: absolute;
+      width: 15px;
+      top: 83px;
+      left: 23px;
+      height: 15px;
     }
     .search-container {
       margin-bottom 8px;
@@ -176,4 +207,4 @@ const Wrapper = styled.div`
   }
 `;
 
-export default Main;
+export default Institution;
