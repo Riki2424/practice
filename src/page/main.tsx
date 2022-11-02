@@ -5,13 +5,13 @@ import SearchList from "../molecles/list";
 
 export const Institution: React.FC = () => {
   const [active, setActive] = useState(true);
-  const SlideMenu = () => {
+  const slideMenu = () => {
     setActive(!active);
   };
   return (
     <>
       <Wrapper>
-        <button className="on-sp" onClick={() => SlideMenu()}>
+        <button className="on-sp" onClick={() => slideMenu()}>
           ボタン
         </button>
         <div className="map">
@@ -24,7 +24,7 @@ export const Institution: React.FC = () => {
           </iframe>
         </div>
         <SearchList
-          SlideMenu={SlideMenu}
+          slideMenu={slideMenu}
           style={active ? ToggleDownProps : ToggleUpProps}
         />
       </Wrapper>

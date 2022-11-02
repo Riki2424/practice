@@ -2,10 +2,10 @@ import React from "react";
 import styled from "styled-components";
 import ContentsFrame from "../atom/contens_flame";
 import { useState } from "react";
-// export const SearchList: React.FC<SlideTypeProps> = ({SlideMenu},props) => {
+// export const SearchList: React.FC<SlideTypeProps> = ({slideMenu},props) => {
 export const SearchList: React.FC<SlideTypeProps> = (props) => {
-  // const SlideButton = () => {
-  //   SlideMenu();
+  // const slideButton = () => {
+  //   slideMenu();
   // };
   return (
     <>
@@ -15,7 +15,7 @@ export const SearchList: React.FC<SlideTypeProps> = (props) => {
             検索結果<span>10</span>
             <p>件</p>
           </p>
-          {/* <div className="back-btn" onClick={() => SlideButton()}>
+          {/* <div className="back-btn" onClick={() => slideButton()}>
             <span className="batu"></span>
           </div> */}
         </div>
@@ -53,7 +53,7 @@ export const SearchList: React.FC<SlideTypeProps> = (props) => {
 
 export type SlideTypeProps = {
   style: any;
-  SlideMenu?: any;
+  slideMenu?: any;
 };
 const SlideProps: React.CSSProperties = {
   top: 0,
