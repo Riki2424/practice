@@ -5,6 +5,7 @@ export interface contentsFrameProps {
   padding?: string;
   margin?: string;
   border?: string;
+  children?: string;
 }
 
 const ContentsWrapper = styled.div<contentsFrameProps>`
@@ -23,7 +24,9 @@ const ContentsFrame: React.FunctionComponent<contentsFrameProps> = (props) => {
       padding={props.padding}
       margin={props.margin}
       border={props.border}
-    ></ContentsWrapper>
+    >
+      {props.children}
+    </ContentsWrapper>
   );
 };
 

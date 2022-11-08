@@ -1,9 +1,9 @@
 import React from "react";
-import Main from "./page/main";
+import { Calendar } from "./page/calendar/calendar";
 const App = () => {
   return (
     <>
-      <Main />
+      <Calendar />
     </>
   );
 };
